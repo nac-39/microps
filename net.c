@@ -55,7 +55,11 @@ static int net_device_close(struct net_device *dev) {
       return -1;
     }
   }
+<<<<<<< HEAD
   dev->flags &= ~NET_DEVICE_FLAG_UP; // upフラグを落とす
+=======
+  dev->flags &= -NET_DEVICE_FLAG_UP; // upフラグを落とす
+>>>>>>> 5213a178c0f999843a4aeb1624345cef208cb11f
   infof("dev=%s, state=%s", dev->name, NET_DEVICE_STATE(dev));
   return 0;
 }
@@ -91,11 +95,14 @@ int net_input_handler(uint16_t type, const uint8_t *data, size_t len,
 // 登録済みの全デバイスをオープン
 int net_run(void) {
   struct net_device *dev;
+<<<<<<< HEAD
   // 割り込み機構の起動
   if (intr_run() == 1) {
     errorf("intr_run() failure");
     return -1;
   }
+=======
+>>>>>>> 5213a178c0f999843a4aeb1624345cef208cb11f
   debugf("open all devices...");
   for (dev = devices; dev; dev = dev->next) {
     net_device_open(dev);

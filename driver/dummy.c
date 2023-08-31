@@ -1,17 +1,23 @@
 #include "dummy.h"
+<<<<<<< HEAD
 #define DUMMY_IRQ INTR_IRQ_BASE
 
+=======
+>>>>>>> 5213a178c0f999843a4aeb1624345cef208cb11f
 static int dummy_transmit(struct net_device *dev, uint16_t type,
                           const uint8_t *data, size_t len, const void *dst) {
   debugf("dev=%s, type=0x%4x, len=%zu", dev->name, type, len);
   debugdump(data, len);
   /*drop data*/
+<<<<<<< HEAD
   intr_raise_irq(DUMMY_IRQ);
   return 0;
 }
 
 static int dummy_isr(unsigned int irq, void *id) {
   debugf("irq=%u, dev=%s", irq, ((struct net_device *)id)->name);
+=======
+>>>>>>> 5213a178c0f999843a4aeb1624345cef208cb11f
   return 0;
 }
 
@@ -38,7 +44,10 @@ struct net_device *dummy_init(void) {
     errorf("net_device_register() failure");
     return NULL;
   }
+<<<<<<< HEAD
   intr_request_irq(DUMMY_IRQ, dummy_isr, INTR_IRQ_SHARED, dev->name, dev);
+=======
+>>>>>>> 5213a178c0f999843a4aeb1624345cef208cb11f
   debugf("initialized, dev=%s", dev->name);
   return dev;
 }
